@@ -5,16 +5,26 @@
 
 
 {% block content %}
+
     <h1>Posts</h1>
 
-
-    <ul>
-
     {% for post in post_list %}
-        <li>
-            {{ post.title }}
-        </li>
+        <div style="border: 2px solid black; background-color: burlywood; color:darkblue; border-radius: 5px; padding: 5px; margin:5px; width:80%">
+            <h3>
+                <a href="{% url 'post_detail' post.pk %}" class="post-title">{{ post.title }}</a>
+            </h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis facere ratione 
+                voluptate officiis quasi facilis itaque ut autem quibusdam eligendi.</p>
+            <div style="display: flex; justify-content: space-between;">
+                <p>Author: {{ post.author }}</p>
+                <div>
+                    <a href="{% url 'post_detail' post.pk %}" class="buttons">Details</a>
+                    <a href="{% url 'post_update' post.pk %}" class="buttons">Edit</a>
+                    <a href="{% url 'post_delete' post.pk %}" class="buttons">Delete</a>
+                </div>
+            </div>
+        </div>
     {% endfor %}
 
-    </ul>
+    
 {% endblock content %}
